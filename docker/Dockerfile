@@ -9,7 +9,7 @@ RUN apt update && \
 
 USER jovyan
 
-RUN git clone https://github.com/kieker-monitoring/SustainKiekerHackathon.git --branch main --depth 1 && \
+RUN git clone https://github.com/YorrickJosuttis/SustainKiekerHackathon.git --branch main --depth 1 && \
     git clone https://github.com/toruseo/UXsim.git --branch v1.7.3 --depth 1 && \
     cd SustainKiekerHackathon/collector && \
     mvn clean package -DskipTests=true
