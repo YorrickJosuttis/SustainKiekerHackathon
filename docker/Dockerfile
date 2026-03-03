@@ -5,13 +5,16 @@ USER root
 RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
 
 RUN apt update && \
-    apt install -y openjdk-21-jdk maven plotutils graphviz ghostscript vim
+    apt install -y openjdk-21-jdk maven plotutils graphviz ghostscript vim unzip git-lfs
 
 USER jovyan
 
 RUN git clone https://github.com/YorrickJosuttis/SustainKiekerHackathon.git --branch main --depth 1 && \
     git clone https://github.com/toruseo/UXsim.git --branch v1.7.3 --depth 1 && \
-    cd SustainKiekerHackathon/collector && \
+    cd SustainKiekerHackathon && \
+    git lfs install && \
+    git lfs pull && \
+    cd collector && \
     mvn clean package -DskipTests=true
 
 RUN sed -i 's/PyQt5>=5.15.7/PyQt6/g' ~/UXsim/pyproject.toml
