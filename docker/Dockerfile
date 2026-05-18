@@ -9,7 +9,7 @@ RUN apt update && \
 
 USER jovyan
 
-RUN git clone https://github.com/YorrickJosuttis/SustainKiekerHackathon.git --branch main --depth 1 && \
+RUN git clone https://github.com/YorrickJosuttis/SustainKiekerHackathon.git --branch py4j --depth 1 && \
     git clone https://github.com/toruseo/UXsim.git --branch v1.7.3 --depth 1 && \
     cd SustainKiekerHackathon && \
     git lfs install && \
@@ -29,7 +29,7 @@ RUN sed -i 's@/tmp@'"${PWD}"'/kieker-logs@g' ~/SustainKiekerHackathon/res/config
 
 RUN echo 'export PYTHONPATH=/home/jovyan/SustainKiekerHackathon/python:$PYTHONPATH' >> /home/jovyan/.bashrc
 
-RUN cd ~/SustainKiekerHackathon && unzip ./tools/trace-analysis-2.0.3-SNAPSHOT.zip
+RUN cd ~/SustainKiekerHackathon && unzip ./tools/trace-analysis-2.0.3-py4j.zip
 
 RUN cd ~/SustainKiekerHackathon && git pull
 
@@ -41,4 +41,4 @@ RUN pip install pypdf
 
 RUN pip install graphviz
 
-# RUN pip install --no-deps kieker-for-jupyter
+RUN pip install kieker-for-jupyter
