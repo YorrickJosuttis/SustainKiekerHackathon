@@ -42,3 +42,5 @@ RUN pip install pypdf
 RUN pip install graphviz
 
 RUN pip install kieker-for-jupyter
+
+RUN pip install py4j
